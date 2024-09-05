@@ -11,7 +11,7 @@ Project: Student Grade Tracker
 
 Objective: The Student Grade Tracker is a Python program designed to help educators, students, and parents manage and track academic performance. The program allows users to input grades for various subjects or assignments, calculates the average grade, and provides additional information such as the overall letter grade and GPA. This tool aims to simplify grade management and provide clear insights into academic performance.
 
-
+![Screenshot (88)](https://github.com/user-attachments/assets/16285046-18ec-476b-9a60-ae03ae92b338)
 
 Features: 
 Grade Input: Enter grades for different subjects or assignments interactively.
