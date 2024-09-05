@@ -1,0 +1,55 @@
+import pandas as pd
+from tabulate import tabulate
+
+def get_grade_input():
+    """ Function to get grades from the user. """
+    grades = []
+    while True:
+        subject = input("Enter the subject (or 'done' to finish): ")
+        if subject.lower() == 'done':
+            break
+        try:
+            grade = float(input(f"Enter the grade for {subject}: "))
+            grades.append((subject, grade))
+        except ValueError:
+            print("Invalid input. Please enter a numeric value for the grade.")
+    return grades
+
+def calculate_average(grades):
+    """ Function to calculate the average grade. """
+    if not grades:
+        return 0
+    total = sum(grade for _, grade in grades)
+    return total / len(grades)
+
+def get_letter_grade(average):
+    """ Function to determine the letter grade from the average. """
+    if average >= 90:
+        return 'A'
+    elif average >= 80:
+        return 'B'
+    elif average >= 70:
+        return 'C'
+    elif average >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def display_grades(grades):
+    """ Function to display the grades in tabular format. """
+    df = pd.DataFrame(grades, columns=['Subject', 'Grade'])
+    average = calculate_average(grades)
+    letter_grade = get_letter_grade(average)
+    df.loc[len(df)] = ['Average', average]
+    df.loc[len(df)] = ['Letter Grade', letter_grade]
+    
+    print("\nStudent Grades:")
+    print(tabulate(df, headers='keys', tablefmt='pretty'))
+
+def main():
+    print("Welcome to the Student Grade Tracker!")
+    grades = get_grade_input()
+    display_grades(grades)
+
+if __name__ == "__main__":
+    main()
